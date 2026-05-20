@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://kpj0sk5c1quw"]
+
+[ext_resource type="Script" uid="uid://j42iu4w5ufl8" path="res://Scripts/beebop.gd" id="1_pd0mv"]
+[ext_resource type="Texture2D" uid="uid://bt15ymocsso7n" path="res://Assets/beebop.png" id="1_thjq7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pd0mv"]
+radius = 55.0
+height = 142.0
+
+[node name="beebop" type="CharacterBody2D" unique_id=524299797]
+script = ExtResource("1_pd0mv")
+
+[node name="Beebop" type="Sprite2D" parent="." unique_id=358390863]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_thjq7")
+region_enabled = true
+region_rect = Rect2(110.5, 0, 286.5, 350)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=262032896]
+shape = SubResource("CapsuleShape2D_pd0mv")
+
+[node name="SotCooldown" type="Timer" parent="." unique_id=686344363]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="SotCooldown" to="." method="_on_sot_cooldown_timeout"]

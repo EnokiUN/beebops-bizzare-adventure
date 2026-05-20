@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dcgbv2c55xlj6"]
+
+[ext_resource type="Texture2D" uid="uid://d1qgbjif7v8d8" path="res://Assets/loser.png" id="1_n6dye"]
+
+[node name="loser" type="CharacterBody2D" unique_id=263386480]
+
+[node name="Loser" type="Sprite2D" parent="." unique_id=929358966]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_n6dye")
+region_enabled = true
+region_rect = Rect2(87.559875, 0, 1001.1589, 969)

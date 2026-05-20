@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c3cd132qh3t33"]
+
+[ext_resource type="Texture2D" uid="uid://drjdx5bllfym0" path="res://Assets/bullet.png" id="1_7tljn"]
+[ext_resource type="Script" uid="uid://dhwjtyohgaqk0" path="res://Scripts/basic_bullet.gd" id="1_uv483"]
+
+[sub_resource type="Curve" id="Curve_uv483"]
+_data = [Vector2(0.22297299, 0.9887641), 0.0, 0.0, 0, 0, Vector2(0.8175676, 0.19101131), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vq6ci"]
+curve = SubResource("Curve_uv483")
+
+[sub_resource type="Gradient" id="Gradient_ax2iw"]
+offsets = PackedFloat32Array(0.040983606, 0.8360656)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qbe15"]
+gradient = SubResource("Gradient_ax2iw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m51ts"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 32.26
+initial_velocity_max = 145.16
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.91546166, 0.23366943, 0.1267251, 1)
+color_ramp = SubResource("GradientTexture1D_qbe15")
+alpha_curve = SubResource("CurveTexture_vq6ci")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7tljn"]
+radius = 15.524175
+
+[node name="BasicBullet" type="Area2D" unique_id=278066191]
+script = ExtResource("1_uv483")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=215757017]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_m51ts")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1497895580]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_7tljn")
+region_enabled = true
+region_rect = Rect2(0, 71.5, 93, 113)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1389659969]
+shape = SubResource("CircleShape2D_7tljn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
