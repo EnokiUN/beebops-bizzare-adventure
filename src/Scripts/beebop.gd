@@ -13,10 +13,12 @@ func _process(_delta):
 		shoot()
 
 func _physics_process(_delta):
-	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
+	var direction = Input.get_vector("left", "right", "up", "down")
 	
 	if direction:
 		velocity = direction * speed
+		if direction.x:
+			$Sprites.scale.x = -1 if velocity.x > 0 else 1
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.y = move_toward(velocity.y, 0, speed)
@@ -24,6 +26,8 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func shoot():
+	$AudioStreamPlayer.pitch_scale = .5 + randf() * .5
+	$AudioStreamPlayer.play()
 	$SotCooldown.start()
 	var bullet: Area2D = bullet_scene.instantiate()
 	bullet.kind = bullet_kind

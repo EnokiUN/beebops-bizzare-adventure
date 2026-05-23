@@ -1,0 +1,29 @@
+[gd_scene format=4 uid="uid://c6pmxbwupn64j"]
+
+[ext_resource type="Texture2D" uid="uid://bpqmewqk78bj3" path="res://icon.svg" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://kpj0sk5c1quw" path="res://Scenes/beebop.tscn" id="2_go701"]
+[ext_resource type="PackedScene" uid="uid://dcgbv2c55xlj6" path="res://Scenes/loser.tscn" id="3_5a7ea"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02cp"]
+texture = ExtResource("1_a02cp")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_go701"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_a02cp")
+
+[node name="World" type="Node2D" unique_id=1655210281]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1006429022 groups=["environment"]]
+position = Vector2(0, 4)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_go701")
+
+[node name="beebop" parent="." unique_id=524299797 instance=ExtResource("2_go701")]
+position = Vector2(187, 395)
+
+[node name="loser" parent="." unique_id=263386480 instance=ExtResource("3_5a7ea")]
+position = Vector2(611, 321)

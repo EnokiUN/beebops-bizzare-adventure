@@ -2,25 +2,77 @@
 
 [ext_resource type="Script" uid="uid://j42iu4w5ufl8" path="res://Scripts/beebop.gd" id="1_pd0mv"]
 [ext_resource type="Texture2D" uid="uid://bt15ymocsso7n" path="res://Assets/beebop.png" id="1_thjq7"]
+[ext_resource type="Texture2D" uid="uid://bpqmewqk78bj3" path="res://icon.svg" id="2_kxtuh"]
+[ext_resource type="Texture2D" uid="uid://2gsy8s7pf6vw" path="res://Assets/Milady.png" id="4_hvhww"]
+[ext_resource type="Texture2D" uid="uid://dh1y7nbk4sk5j" path="res://Assets/SaxsToBeU.png" id="5_k635x"]
+[ext_resource type="AudioStream" uid="uid://cush8nsvlbir" path="res://Assets/E note.wav" id="6_k635x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pd0mv"]
 radius = 55.0
-height = 142.0
+height = 194.0
 
 [node name="beebop" type="CharacterBody2D" unique_id=524299797]
 script = ExtResource("1_pd0mv")
 
-[node name="Beebop" type="Sprite2D" parent="." unique_id=358390863]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_thjq7")
-region_enabled = true
-region_rect = Rect2(110.5, 0, 286.5, 350)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=262032896]
+position = Vector2(0, 24)
 shape = SubResource("CapsuleShape2D_pd0mv")
 
 [node name="SotCooldown" type="Timer" parent="." unique_id=686344363]
 wait_time = 0.25
 one_shot = true
+
+[node name="Sprites" type="Node2D" parent="." unique_id=298326888]
+
+[node name="Icon" type="Sprite2D" parent="Sprites" unique_id=1179254313]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-28.661402, 90.881775)
+rotation = -3.1269248
+scale = Vector2(0.1134155, -0.3376657)
+texture = ExtResource("2_kxtuh")
+
+[node name="Icon3" type="Sprite2D" parent="Sprites" unique_id=1541811929]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-34.000004, 112.00001)
+rotation = -1.5504309
+scale = Vector2(0.089446716, -0.18684876)
+texture = ExtResource("2_kxtuh")
+
+[node name="Icon4" type="Sprite2D" parent="Sprites" unique_id=752564843]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(18.999996, 113)
+rotation = -1.5504309
+scale = Vector2(0.089446716, -0.18684876)
+texture = ExtResource("2_kxtuh")
+
+[node name="Icon2" type="Sprite2D" parent="Sprites" unique_id=625258157]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(23.000002, 90.00001)
+rotation = 3.0797136
+scale = Vector2(0.11341551, -0.3376657)
+texture = ExtResource("2_kxtuh")
+
+[node name="Beebop" type="Sprite2D" parent="Sprites" unique_id=358390863]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_thjq7")
+region_enabled = true
+region_rect = Rect2(110.5, 0, 286.5, 350)
+
+[node name="Milady" type="Sprite2D" parent="Sprites" unique_id=263472079]
+position = Vector2(-5, -62)
+scale = Vector2(0.023724468, 0.023724476)
+texture = ExtResource("4_hvhww")
+
+[node name="SaxsToBeU" type="Sprite2D" parent="Sprites" unique_id=2080566273]
+position = Vector2(-18, -12.999999)
+scale = Vector2(0.04015625, 0.040156253)
+texture = ExtResource("5_k635x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=616877324]
+stream = ExtResource("6_k635x")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1933990730]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [connection signal="timeout" from="SotCooldown" to="." method="_on_sot_cooldown_timeout"]

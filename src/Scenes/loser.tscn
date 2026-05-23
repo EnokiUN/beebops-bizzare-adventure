@@ -1,11 +1,47 @@
 [gd_scene format=3 uid="uid://dcgbv2c55xlj6"]
 
+[ext_resource type="Script" uid="uid://ssyxlfo4vkuh" path="res://Scenes/loser.gd" id="1_k18fg"]
 [ext_resource type="Texture2D" uid="uid://d1qgbjif7v8d8" path="res://Assets/loser.png" id="1_n6dye"]
+[ext_resource type="Texture2D" uid="uid://d14qd0rt582cx" path="res://Assets/ClownWig.png" id="2_vm5wx"]
+[ext_resource type="Texture2D" uid="uid://cm83vpx177bar" path="res://Assets/HonkHonkWhosThere.png" id="3_k18fg"]
+[ext_resource type="Script" uid="uid://bioh54yxq2e6b" path="res://Scenes/chase.gd" id="5_usbpo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm5wx"]
+radius = 44.0
+height = 102.0
 
 [node name="loser" type="CharacterBody2D" unique_id=263386480]
+script = ExtResource("1_k18fg")
 
-[node name="Loser" type="Sprite2D" parent="." unique_id=929358966]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=259345645]
+position = Vector2(-4, 0)
+shape = SubResource("CapsuleShape2D_vm5wx")
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1697244925]
+
+[node name="Loser" type="Sprite2D" parent="Sprites" unique_id=929358966]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_n6dye")
 region_enabled = true
 region_rect = Rect2(87.559875, 0, 1001.1589, 969)
+
+[node name="ClownWig" type="Sprite2D" parent="Sprites" unique_id=1855379347]
+position = Vector2(9.000001, -39)
+rotation = 0.07164366
+scale = Vector2(0.03734628, 0.037346266)
+texture = ExtResource("2_vm5wx")
+
+[node name="HonkHonkWhosThere" type="Sprite2D" parent="Sprites" unique_id=475298358]
+position = Vector2(14.000001, -27)
+scale = Vector2(0.005466393, 0.005466393)
+texture = ExtResource("3_k18fg")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=298173111]
+debug_enabled = true
+
+[node name="States" type="Node" parent="." unique_id=308708840]
+
+[node name="Chase" type="Node" parent="States" unique_id=1212468778]
+script = ExtResource("5_usbpo")
+
+[node name="Attack" type="Node" parent="States" unique_id=835642019]
