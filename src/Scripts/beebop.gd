@@ -33,7 +33,7 @@ func shoot():
 	bullet.kind = bullet_kind
 	bullet_kind = not bullet_kind
 	bullet.global_position = global_position
-	bullet.look_at(get_viewport().get_mouse_position())
+	bullet.look_at(get_global_mouse_position())
 	get_parent().add_child(bullet)
 
 func _on_sot_cooldown_timeout():

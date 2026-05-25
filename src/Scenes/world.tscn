@@ -27,15 +27,9 @@ position = Vector2(0, 4)
 tile_map_data = PackedByteArray("AAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAAIAP//AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAABAPr/AAAAAAAAAAAAAPr/AAAAAAAAAAD///r/AAAAAAAAAAD+//r/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD6//v/AAAAAAAAAAD6//z/AAAAAAAAAAD6//3/AAAAAAAAAAD6//7/AAAAAAAAAAD6////AAAAAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAADAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_go701")
 
-[node name="beebop" parent="." unique_id=524299797 instance=ExtResource("2_go701")]
-position = Vector2(187, 395)
-
-[node name="loser" parent="." unique_id=263386480 node_paths=PackedStringArray("target") instance=ExtResource("3_5a7ea")]
-position = Vector2(611, 321)
-target = NodePath("../beebop")
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1507988876]
 navigation_polygon = SubResource("NavigationPolygon_5a7ea")
+metadata/_edit_lock_ = true
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D" unique_id=148672364]
 vertices = PackedVector2Array(-5, -258, -5, 131, 384, 136, 385, -256)
@@ -44,3 +38,38 @@ affect_navigation_mesh = true
 [node name="NavigationObstacle2D2" type="NavigationObstacle2D" parent="NavigationRegion2D" unique_id=495389800]
 vertices = PackedVector2Array(381, 257, 379, 512, 515, 512, 515, 261)
 affect_navigation_mesh = true
+
+[node name="beebop" parent="." unique_id=524299797 instance=ExtResource("2_go701")]
+position = Vector2(187, 395)
+
+[node name="loser" parent="." unique_id=263386480 node_paths=PackedStringArray("target") instance=ExtResource("3_5a7ea")]
+position = Vector2(811, 434)
+target = NodePath("../beebop")
+
+[node name="loser4" parent="." unique_id=1879913154 node_paths=PackedStringArray("target") instance=ExtResource("3_5a7ea")]
+position = Vector2(910, 436)
+target = NodePath("../beebop")
+
+[node name="loser2" parent="." unique_id=893315346 node_paths=PackedStringArray("target") instance=ExtResource("3_5a7ea")]
+position = Vector2(709, 431)
+target = NodePath("../beebop")
+
+[node name="loser3" parent="." unique_id=349253891 node_paths=PackedStringArray("target") instance=ExtResource("3_5a7ea")]
+position = Vector2(602, 430)
+target = NodePath("../beebop")
+
+[node name="loser5" parent="." unique_id=2048263838 node_paths=PackedStringArray("target") instance=ExtResource("3_5a7ea")]
+position = Vector2(813, 321)
+target = NodePath("../beebop")
+
+[node name="loser6" parent="." unique_id=2025040938 node_paths=PackedStringArray("target") instance=ExtResource("3_5a7ea")]
+position = Vector2(912, 323)
+target = NodePath("../beebop")
+
+[node name="loser7" parent="." unique_id=1049848408 node_paths=PackedStringArray("target") instance=ExtResource("3_5a7ea")]
+position = Vector2(711, 318)
+target = NodePath("../beebop")
+
+[node name="loser8" parent="." unique_id=1346220650 node_paths=PackedStringArray("target") instance=ExtResource("3_5a7ea")]
+position = Vector2(604, 317)
+target = NodePath("../beebop")

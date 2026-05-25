@@ -2,9 +2,14 @@ extends CharacterBody2D
 
 @export var speed = 300.0
 @export var target: CharacterBody2D
-@onready var states = $States.get_children()
+@onready var states = {}
 
-var state = 0
+var state = "chase"
+
+func _ready() -> void:
+	for child in $States.get_children():
+		states[child.name.to_lower()] = child
+
 
 func _physics_process(delta: float) -> void:
 

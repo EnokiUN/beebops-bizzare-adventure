@@ -1,14 +1,76 @@
 [gd_scene format=3 uid="uid://dcgbv2c55xlj6"]
 
-[ext_resource type="Script" uid="uid://ssyxlfo4vkuh" path="res://Scenes/loser.gd" id="1_k18fg"]
+[ext_resource type="Script" uid="uid://ssyxlfo4vkuh" path="res://Scripts/loser.gd" id="1_k18fg"]
 [ext_resource type="Texture2D" uid="uid://d1qgbjif7v8d8" path="res://Assets/loser.png" id="1_n6dye"]
+[ext_resource type="Texture2D" uid="uid://cwtmejg5byd6" path="res://Assets/whip.webp" id="2_urmmc"]
 [ext_resource type="Texture2D" uid="uid://d14qd0rt582cx" path="res://Assets/ClownWig.png" id="2_vm5wx"]
 [ext_resource type="Texture2D" uid="uid://cm83vpx177bar" path="res://Assets/HonkHonkWhosThere.png" id="3_k18fg"]
-[ext_resource type="Script" uid="uid://bioh54yxq2e6b" path="res://Scenes/chase.gd" id="5_usbpo"]
+[ext_resource type="Script" uid="uid://bioh54yxq2e6b" path="res://Scripts/chase.gd" id="5_usbpo"]
+[ext_resource type="Script" uid="uid://cso3b8p1vuelr" path="res://Scripts/attack.gd" id="6_imyon"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vm5wx"]
 radius = 44.0
 height = 102.0
+
+[sub_resource type="Animation" id="Animation_urmmc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Whip:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.5708923]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Whip:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.13461383, 0.13461384)]
+}
+
+[sub_resource type="Animation" id="Animation_ixody"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Whip:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.57, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.5708923, -0.80675393, 3.518583772020569, -0.5708923]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Whip:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.56666666, 0.9),
+"transitions": PackedFloat32Array(1, 0.4829682, 1),
+"update": 0,
+"values": [Vector2(0.13461383, 0.13461384), Vector2(0.3438033, 0.1397051), Vector2(0.13461383, 0.13461384)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aqi33"]
+_data = {
+&"RESET": SubResource("Animation_urmmc"),
+&"attack": SubResource("Animation_ixody")
+}
 
 [node name="loser" type="CharacterBody2D" unique_id=263386480]
 script = ExtResource("1_k18fg")
@@ -18,6 +80,14 @@ position = Vector2(-4, 0)
 shape = SubResource("CapsuleShape2D_vm5wx")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1697244925]
+
+[node name="Whip" type="Sprite2D" parent="Sprites" unique_id=34508349]
+position = Vector2(-30.000002, -34)
+rotation = -0.5708923
+scale = Vector2(0.13461383, 0.13461384)
+texture = ExtResource("2_urmmc")
+offset = Vector2(-187.84415, -109.4556)
+flip_h = true
 
 [node name="Loser" type="Sprite2D" parent="Sprites" unique_id=929358966]
 scale = Vector2(0.1, 0.1)
@@ -36,7 +106,9 @@ position = Vector2(14.000001, -27)
 scale = Vector2(0.005466393, 0.005466393)
 texture = ExtResource("3_k18fg")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=298173111]
+[node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=298173111]
+unique_name_in_owner = true
+avoidance_enabled = true
 debug_enabled = true
 
 [node name="States" type="Node" parent="." unique_id=308708840]
@@ -45,3 +117,7 @@ debug_enabled = true
 script = ExtResource("5_usbpo")
 
 [node name="Attack" type="Node" parent="States" unique_id=835642019]
+script = ExtResource("6_imyon")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=491422228]
+libraries/ = SubResource("AnimationLibrary_aqi33")
